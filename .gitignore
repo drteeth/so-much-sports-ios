@@ -6,3 +6,4 @@ resources/*.storyboardc
 vendor/bundle/
 .bundle/
 .data*
+.DS_Store
