@@ -1,0 +1,6 @@
+- add a splash controller
+- load the data on the splash controller
+- create a sync model that does it's work in the BG
+- add a Quotables controller and show a quote during load (if we have one)
+- add sport icons
+- add team icons (dynamically?)

@@ -1,11 +1,10 @@
 class Game
+  include Properties
 
-  def initialize(status)
-    @status = status
-  end
+  properties :status
 
-  def to_s
-    @status
+  def initialize(attributes={})
+    init_attributes(attributes)
   end
 
 end

@@ -1,16 +1,10 @@
 class Sport
-  PROPERTIES = [
-    :name
-  ]
+  include Properties
 
-  PROPERTIES.each { |property|
-    attr_accessor property
-  }
+  properties :name, :periods
 
-  def initialize(attributes)
-    attributes.each do |key,value|
-      self.send("#{key}=", value) if PROPERTIES.member? key
-    end
+  def initialize(attributes={})
+    init_attributes(attributes)
     @periods = []
   end
 
