@@ -4,7 +4,7 @@ class SportCell < UITableViewCell
 
   def initWithStyle(style, reuseIdentifier:reuseIdentifier)
     if super
-      icon_size = 128
+      icon_size = 128 # TODO retina?
       size = self.contentView.bounds.size
       cell_width = size.width / 2
       left_padding = (cell_width - icon_size) / 2
