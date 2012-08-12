@@ -11,33 +11,48 @@ class SportsController < UIViewController
     tableView.dataSource = self
     tableView.delegate = self
 
-    @sports = %w(NHL MLB NFL UHF OOP MBK).map { |name| Sport.new(name:name) }
+    @sports = %w(NHL MLB NFL MLS NBA).map { |name| Sport.new(name:name) }
   end
 
   def tableView(tableView, numberOfRowsInSection:section)
-    @sports.count
+    (@sports.count / 2.0).ceil
   end
 
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
     @reuseIdentifier ||= 'sport_row'
 
+    row1 = indexPath.row * 2
+
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || SportCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
 
-    cell.col1.image = UIImage.imageNamed("nfl-sport-icon.png")
-    cell.col2.image = UIImage.imageNamed("nhl-sport-icon.png")
+    sport = @sports[row1]
+    icon = UIImage.imageNamed("#{sport.name.downcase}-sport-icon.png")
 
+    cell.col1.setBackgroundImage(icon, forState:UIControlStateNormal)
+    cell.col1.addTarget(self, action:'sport_button_click:', forControlEvents:UIControlEventTouchUpInside)
+
+    cell.col1.tag = row1
+
+    row2 = row1 + 1
+    sport2 = @sports[row2]
+    if sport2
+      icon2 = UIImage.imageNamed("#{sport2.name.downcase}-sport-icon.png")
+      cell.col2.setBackgroundImage(icon2, forState:UIControlStateNormal)
+      cell.col2.addTarget(self, action:'sport_button_click:', forControlEvents:
+        UIControlEventTouchUpInside)
+
+      cell.col2.tag = row2
+    end
     cell
   end
 
-  def tableView(tableView, heightForRowAtIndexPath:indexPath)
-    return 128
+  def sport_button_click(sender)
+    game_controller = GameController.alloc.initWithSport(@sports[sender.tag])
+    self.navigationController.pushViewController(game_controller, animated:true)
   end
 
-  def tableView(tableView, didSelectRowAtIndexPath:indexPath)
-    tableView.deselectRowAtIndexPath(indexPath, animated:true)
-
-    game_controller = GameController.alloc.initWithSport(@sports[indexPath.row])
-    self.navigationController.pushViewController(game_controller, animated:true)
+  def tableView(tableView, heightForRowAtIndexPath:indexPath)
+    return 128 + 32
   end
 
 end
