@@ -27,7 +27,7 @@ class PeriodController < UIViewController
 
     cell = tableView.dequeueReusableCellWithIdentifier(@cellId) || UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@cellId)
 
-    cell.textLabel.text = @period.games[indexPath.row].to_s
+    cell.textLabel.text = @period.games[indexPath.row].status
 
     cell
   end

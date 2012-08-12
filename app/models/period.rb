@@ -5,6 +5,7 @@ class Period
 
   def initialize(attributes={})
     init_attributes(attributes)
+    @games ||= []
   end
 
 end

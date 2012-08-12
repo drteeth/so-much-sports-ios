@@ -5,8 +5,7 @@ describe Period do
       id:'20120812',
       label:'Tue.',
       is_default:true,
-      sport:'NHL',
-      games:[],
+      sport:'NHL'
     )
 
     p.id.should == '20120812'
