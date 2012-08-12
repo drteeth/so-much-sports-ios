@@ -21,10 +21,10 @@ class SportsController < UIViewController
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
     @reuseIdentifier ||= 'sport_row'
 
-    cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
+    cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || SportCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
 
-    cell.textLabel.text = @sports[indexPath.row].name
-    cell.imageView.image = UIImage.imageNamed("nfl-sport-icon.png")
+    cell.col1.image = UIImage.imageNamed("nfl-sport-icon.png")
+    cell.col2.image = UIImage.imageNamed("nhl-sport-icon.png")
 
     cell
   end
