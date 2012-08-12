@@ -5,5 +5,5 @@ resources/*.momd
 resources/*.storyboardc
 vendor/bundle/
 .bundle/
-.data*
+.dat*
 .DS_Store
