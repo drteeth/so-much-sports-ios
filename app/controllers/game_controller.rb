@@ -3,6 +3,13 @@ class GameController < UITabBarController
   def initWithSport(sport)
     @sport = sport
     self.init
+    self
+  end
+
+  def viewDidLoad
+    super
+
+    self.title = @sport.name
 
     # TODO load new controllers for each period in the sport
     # TODO figure out why the tabs don't show up until clicked
@@ -12,14 +19,6 @@ class GameController < UITabBarController
       @sport.add_period(period)
       PeriodController.alloc.initWithPeriod(period)
     end
-
-    self
-  end
-
-  def viewDidLoad
-    super
-
-    self.title = @sport.name
   end
 
 end

@@ -5,6 +5,7 @@ class SportsController < UIViewController
 
     self.title = 'So Much Sports'
 
+    # UIApplication.defaultApp.status.frame.size.height
     tableView = UITableView.alloc.initWithFrame(self.view.bounds)
     self.view.addSubview(tableView)
 
