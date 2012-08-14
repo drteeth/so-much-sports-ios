@@ -6,7 +6,9 @@ class SportsController < UIViewController
     self.title = 'So Much Sports'
 
     # UIApplication.defaultApp.status.frame.size.height
-    tableView = UITableView.alloc.initWithFrame(self.view.bounds)
+    status_bar_height = UIApplication.sharedApplication.statusBarFrame.size.height
+    bounds = self.view.bounds.size
+    tableView = UITableView.alloc.initWithFrame([[0,0], [bounds.width, bounds.height - status_bar_height - 16]])
     self.view.addSubview(tableView)
 
     tableView.dataSource = self

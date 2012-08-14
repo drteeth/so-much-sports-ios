@@ -3,15 +3,17 @@ class PeriodController < UIViewController
   def initWithPeriod(period)
     self.init
     @period = period
+    self.title = "#{@period.sport} #{@period.label}"
     self
   end
 
   def viewDidLoad
     super
 
-    self.title = "#{@period.sport} #{@period.label}"
+    status_bar_height = UIApplication.sharedApplication.statusBarFrame.size.height
+    bounds = self.view.bounds.size
+    tableView = UITableView.alloc.initWithFrame([[0,0], [bounds.width, bounds.height - status_bar_height - 16]])
 
-    tableView = UITableView.alloc.initWithFrame(self.view.bounds)
     tableView.dataSource = self
     tableView.delegate = self
 
