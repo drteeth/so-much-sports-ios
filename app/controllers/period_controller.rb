@@ -27,9 +27,22 @@ class PeriodController < UIViewController
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
     @cellId ||= 'cell_id'
 
-    cell = tableView.dequeueReusableCellWithIdentifier(@cellId) || UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@cellId)
+    cell = tableView.dequeueReusableCellWithIdentifier(@cellId) || GameCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@cellId)
 
-    cell.textLabel.text = @period.games[indexPath.row].status
+    # game = @period.games[indexPath.row]
+
+    cell.status.text = "#{game.home_team.name} #{game.home_team.score} vs #{game.visiting_team.name} #{game.visiting_team.score}"
+
+    # cell.home_team_score.text = 'hscore'
+    # cell.home_team_name.text = 'hname'
+    # cell.visiting_team_score.text = 'vscore'
+    # cell.visiting_team_name.text = 'vname'
+
+    # TODO add icons
+    # home_icon = UIImage.imageNamed("nfl-sport-icon.png")
+    # cell.home_team_icon.setBackgroundImage(home_icon, forState:UIControlStateNormal)
+    # visiting_icon = UIImage.imageNamed("nhl-sport-icon.png")
+    # cell.visiting_team_icon.setBackgroundImage(visiting_icon, forState:UIControlStateNormal)
 
     cell
   end
