@@ -47,4 +47,8 @@ class PeriodController < UIViewController
     cell
   end
 
+  def tableView(tableView, heightForRowAtIndexPath:indexPath)
+    return 120 + (2 * 20)
+  end
+
 end

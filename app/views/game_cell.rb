@@ -25,6 +25,8 @@ class GameCell < UITableViewCell
 
       # h = self.contentView.frame.size.height
       @status = UILabel.alloc.initWithFrame([[0,0],[320, 20]])
+      @status.textAlignment = UITextAlignmentCenter
+
       self.contentView.addSubview(@status)
       # self.contentView.addSubview(@home_team_score)
       # self.contentView.addSubview(@home_team_name)
