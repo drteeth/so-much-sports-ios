@@ -1,7 +1,7 @@
 class Team
   include Properties
 
-  properties :id, :name, :score
+  properties :id, :name, :score, :alias
 
   def initialize(attributes={})
     init_attributes(attributes)
